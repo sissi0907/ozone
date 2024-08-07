@@ -22,11 +22,11 @@ jobs:
       - name: Check
         uses: actions/checkout@v3
         with:
-          ref: 36901d4d4f1d88e3b3de636ad4c379eee67f5221
+          ref: fe5b9174485166cfd80da1f74505942110c0cdf7
   
       - name: Test with Maven 
         run: | 
-              for i in {1..5}; do mvn test -pl hadoop-ozone -am -Dtest=org.apache.hadoop.ozone.scm.TestSecretKeySnapshot#testInstallSnapshot -DfailIfNoTests=false -Drat.skip -fae; done#>>test_log_DOXIATOOLS-64.txt || echo "Test iteration $i failed">>test_log_DOXIATOOLS-64.txt; done
+              for i in {1..5}; do mvn test -pl hadoop-ozone -am -Dtest=org.apache.hadoop.ozone.TestSecureOzoneCluster#testDelegationTokenRenewCrossCertificateRenew -DfailIfNoTests=false -Drat.skip -fae; done#>>test_log_DOXIATOOLS-64.txt || echo "Test iteration $i failed">>test_log_DOXIATOOLS-64.txt; done
               
       # - name: Upload Test Log 
       #   if: always() 
