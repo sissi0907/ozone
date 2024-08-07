@@ -22,15 +22,15 @@ jobs:
       - name: Check
         uses: actions/checkout@v3
         with:
-          ref: 36901d4d4f1d88e3b3de636ad4c379eee67f5221
+          ref: fe5b9174485166cfd80da1f74505942110c0cdf7
   
       - name: Test with Maven 
         run: | 
-              for i in {1..100}; do mvn test -pl hadoop-ozone -am -Dtest=org.apache.hadoop.ozone.scm.TestSecretKeySnapshot#testInstallSnapshot -DfailIfNoTests=false -Drat.skip -fae>>test_log_HDDS-8839.txt || echo "Test iteration $i failed">>test_log_HDDS-8839.txt; done
+              for i in {1..100}; do mvn test -pl hadoop-ozone -am -Dtest=org.apache.hadoop.ozone.TestSecureOzoneCluster#testDelegationTokenRenewCrossCertificateRenew -DfailIfNoTests=false -Drat.skip -fae>>test_log_HDDS-8622.txt || echo "Test iteration $i failed">>test_log_HDDS-8622.txt; done
               
       - name: Upload Test Log 
         if: always() 
         uses: actions/upload-artifact@v2 
         with: 
-          name: test_log_HDDS-8839
-          path: test_log_HDDS-8839.txt
+          name: test_log_HDDS-8622
+          path: test_log_HDDS-8622.txt
